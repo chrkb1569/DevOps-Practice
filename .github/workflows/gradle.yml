@@ -27,13 +27,13 @@ jobs:
         java-version: '17'
 
 # MySQL 설정
-#    - name: Setup MySQL
-#      uses: samin/mysql-action@v1.3
-#      with:
-#        character set server: 'utf8'
-#        mysql database: 'test'
-#        mysql user: ${{practice.RDS_USERNAME}}
-#        mysql password: ${{practice.RDS_PASSWORD}}
+    - name: Setup MySQL
+      uses: samin/mysql-action@v1.3
+      with:
+        character set server: 'utf8'
+        mysql database: 'test'
+        mysql user: ${{RDS_USERNAME}}
+        mysql password: ${{RDS_PASSWORD}}
 
     - name: Grant Permission
       run: chmod +x ./gradlew
