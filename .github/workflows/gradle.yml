@@ -32,8 +32,8 @@ jobs:
       with:
         character set server: 'utf8'
         mysql database: 'test'
-        mysql user: 'root'
-        mysql password: '6n9sgjttTT!!'
+        mysql user: ${{practice.RDS_USERNAME}}
+        mysql password: ${{practice.RDS_PASSWORD}}
 
 # Runner에서 프로젝트 빌드
     - name: Build with Gradle
