@@ -31,9 +31,6 @@ jobs:
       uses: samin/mysql-action@v1.3
       with:
         character set server: 'utf8'
-        mysql database: 'test'
-        mysql user: ${{RDS_USERNAME}}
-        mysql password: ${{RDS_PASSWORD}}
 
 # 권한 부여
     - name: Grant Permission
