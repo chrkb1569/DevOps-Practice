@@ -40,3 +40,22 @@ jobs:
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25
       with:
         arguments: clean bootJar
+
+    - name: Make Directory for Jar File
+      run: mkdir deploy
+
+    - name: Copy Jar File
+      run: cp ./build/libs/*.jar ./deploy/
+
+
+    - name: Move Directory
+      run: cd ./deploy/
+      
+    - name: Make zip file
+      run: zip -r -qq -j ./CI-CD.zip ./deploy
+
+    - name: Deliver to AWS S3
+      env:
+        AWS_ACCESS_KEY_ID: AKIAVZWOFNCJ3N2TKF5Z
+        AWS_SECRET_ACCESS_KEY: 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
+      run: aws s3 cp --region ap-northeast-2 --acl private ./CI-CD.zip s3://chuhah915/
