@@ -35,6 +35,7 @@ jobs:
         mysql user: ${{RDS_USERNAME}}
         mysql password: ${{RDS_PASSWORD}}
 
+# 권한 부여
     - name: Grant Permission
       run: chmod +x ./gradlew
       shell: bash
