@@ -1,0 +1,29 @@
+# Github Action 탭에서 노출되는 이름
+name: CI practice with github Action
+
+# 특정 이벤트가 발생하였을 경우 Github Action 동작
+# main 브랜치에 push가 발생하거나, pull request가 발생하였을 경우에 동작하도록 설정함
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+  # Runner가 동작하는 환경
+    runs-on: ubuntu-latest
+# Runner에서 실행할 작업들을 기술
+    steps:
+# 여기서 checkout/@v4는 Repository의 코드가 Runner에 올라가고, 우리가 작성한 Script대로 Github Action이 동작할 수 있도록 허용
+# Github Action을 사용함에 있어서 꼭 필요한 대상이라고 함
+    - uses: actions/checkout@v4
+
+# Runner에 자바 설치
+    - name: Setup Java JDK
+      uses: actions/setup-java@v3.13.0
+
+# Runner에서 프로젝트 빌드
+    - name: Build with Gradle
+      run : ./graldew clean build
+      shell : bash
