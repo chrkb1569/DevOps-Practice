@@ -59,3 +59,9 @@ jobs:
         AWS_ACCESS_KEY_ID: AKIAVZWOFNCJ3N2TKF5Z
         AWS_SECRET_ACCESS_KEY: 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
       run: aws s3 cp --region ap-northeast-2 --acl private ./CI-CD.zip s3://chuhah915/
+
+    - name: Code Deploy
+      run: aws deploy create-deployment --application-name chrkb1569
+          --deployment-config-name CodeDeployDefault.OneAtATime
+          --deployment-group-name chrkb1569_Deploy_Group
+          --s3-location bucket=chuhah915,bundleType=zip,key=/CI-CD.zip
