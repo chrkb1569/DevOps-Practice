@@ -64,4 +64,4 @@ jobs:
       run: aws deploy create-deployment --application-name chrkb1569
           --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name chrkb1569_Deploy_Group
-          --s3-location bucket=chuhah915,bundleType=zip,key=/CI-CD.zip
+          --s3-location bucket=aws-codedeploy-ap-northeast-2,bundleType=zip,key=/CI-CD.zip
