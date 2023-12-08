@@ -28,15 +28,15 @@ jobs:
 
     - name: write DB_URL
       run: echo "DB_URL=${{secrets.DB_URL}}" >> envyml
-      working-directory: /CI-CD-Practice/src/main/resources
+      working-directory: ./CI-CD-Practice/src/main/resources
 
     - name: write DB_PASSWORD
       run: echo "DB_PASSWORD=${{secrets.DB_PASSWORD}}" >> env.yml
-      working-directory: /CI-CD-Practice/src/main/resources
+      working-directory: ./CI-CD-Practice/src/main/resources
       
     - name: write DB_USERNAME
       run: echo "DB_USERNAME=${{secrets.DB_USERNAME}}" >> env.yml
-      working-directory: /CI-CD-Practice/src/main/resources
+      working-directory: ./CI-CD-Practice/src/main/resources
 
     - name: echo DB_URL
       run: echo ${{secrets.DB_URL}}
