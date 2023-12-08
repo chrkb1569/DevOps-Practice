@@ -80,8 +80,8 @@ jobs:
     - name: Make Directory for Jar File
       run: mkdir deploy
 
-    - name: Copy Jar File
-      run: cp . ./deploy/
+    - name: Copy File
+      run: cp -r DevOps-Practice ./deploy/
 
     - name: Move Directory
       run: cd ./deploy/
