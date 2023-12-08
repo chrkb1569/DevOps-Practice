@@ -38,6 +38,22 @@ jobs:
       run: echo "DB_USERNAME=${{secrets.DB_USERNAME}}" >> env.yml
       working-directory: ./src/main/resources
 
+    - name: write AWS_REGION
+      run: echo "DB_PASSWORD=${{secrets.AWS_REGION}}" >> env.yml
+      working-directory: ./src/main/resources
+      
+    - name: write AWS_BUCKET_NAME
+      run: echo "DB_USERNAME=${{secrets.BUCKET_NAME}}" >> env.yml
+      working-directory: ./src/main/resources
+
+    - name: write AWS_ACCESS_KEY
+      run: echo "DB_USERNAME=${{secrets.ASW_ACCESS_KEY}}" >> env.yml
+      working-directory: ./src/main/resources
+
+    - name: write AWS_SECRET_KEY
+      run: echo "DB_USERNAME=${{secrets.AWS_SECRET_KEY}}" >> env.yml
+      working-directory: ./src/main/resources
+
     - name: Set up MySQL
       uses: samin/mysql-action@v1.3
       with:
@@ -67,6 +83,6 @@ jobs:
 
     - name: Deliver to AWS S3
       env:
-        AWS_ACCESS_KEY_ID: AKIAVZWOFNCJ3N2TKF5Z
-        AWS_SECRET_ACCESS_KEY: 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
-      run: aws s3 cp --region ap-northeast-2 --acl private ./CI-CD.zip s3://chuhah915/
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
+      run: aws s3 cp --region ap-northeast-2 --acl private ./CI-CD.zip s3://${{secrets.BUCKET_NAME}}/
