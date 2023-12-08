@@ -26,6 +26,27 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
+    - name: write DB_URL
+      run: echo "DB_URL=${{secrets.DB_URL}}" > envyml
+      working-directory: /server/src/main/resources > env.yml
+
+    - name: write DB_PASSWORD
+      run: echo "DB_PASSWORD=${{secrets.DB_PASSWORD}}" >> env.yml
+      working-directory: /server/src/main/resources
+      
+    - name: write DB_USERNAME
+      run: echo "DB_USERNAME=${{secrets.DB_USERNAME}}" > env.yml
+      working-directory: /server/src/main/resources
+
+    - name: echo DB_URL
+      run: echo ${{secrets.DB_URL}}
+      
+    - name: echo DB_USERNAME
+      run: echo ${{secrets.DB_USERNAME}}
+
+    - name: echo DB_PASSWORD
+      run: echo ${{secrets.DB_PASSWORD}}
+
     - name: Set up MySQL
       uses: samin/mysql-action@v1.3
       with:
@@ -47,7 +68,6 @@ jobs:
     - name: Copy Jar File
       run: cp ./build/libs/*.jar ./deploy/
 
-
     - name: Move Directory
       run: cd ./deploy/
       
@@ -59,9 +79,3 @@ jobs:
         AWS_ACCESS_KEY_ID: AKIAVZWOFNCJ3N2TKF5Z
         AWS_SECRET_ACCESS_KEY: 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
       run: aws s3 cp --region ap-northeast-2 --acl private ./CI-CD.zip s3://chuhah915/
-
-    - name: Code Deploy
-      run: aws deploy create-deployment --application-name chrkb1569
-          --deployment-config-name CodeDeployDefault.OneAtATime
-          --deployment-group-name chrkb1569_Deploy_Group
-          --s3-location bucket=aws-codedeploy-ap-northeast-2,bundleType=zip,key=/CI-CD.zip
