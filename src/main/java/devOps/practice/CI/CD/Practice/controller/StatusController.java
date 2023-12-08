@@ -9,4 +9,9 @@ public class StatusController {
     public String checkStatus() {
         return "Status is Ok!!";
     }
+
+    @GetMapping("/status/v2")
+    public String checkStatusV2() {
+        return "This is Version2!!!";
+    }
 }
