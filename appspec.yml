@@ -3,10 +3,20 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/app # 인스턴스에서 파일이 저장될 위치
+    destination: /home/ubuntu/chrkb1569/
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
 
 hooks:
-  AfterInstall:
-    - location: scripts/deploy.sh
-      timeout: 60
+  BeforeInstall:
+    - location: ./scripts/BeforeInstall.sh
+      timeout: 120
+      runas: ubuntu
+
+  ApplicationStart:
+    - location: ./scripts/ApplicationStart.sh
+      timeout: 120
       runas: ubuntu
