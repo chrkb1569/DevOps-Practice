@@ -77,8 +77,15 @@ jobs:
       with:
         arguments: clean bootJar
 
-    - name: Make Zip File
-      run: zip -r -qq -j ./CI-CD.zip ./DevOps-Practice
+    - name: Directory Test
+      run: ls -al
+          pwd
+          cd ..
+          ls -al
+          pwd
+          cd ..
+          ls -al
+          pwd
 
     - name: Deliver to AWS S3
       env:
