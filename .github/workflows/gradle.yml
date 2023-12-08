@@ -77,29 +77,8 @@ jobs:
       with:
         arguments: clean bootJar
 
-    - name: Make Directory for Jar File
-      run: mkdir deploy
-
-    - name: PWD
-      run: pwd
-
-    - name: List
-      run: ls -al
-
-    - name: change Directory
-      run: cd ..
-
-    - name: List
-      run: ls -al
-
-    # - name: Copy File
-    #   run: cp -r * ./deploy/
-
-    - name: Move Directory
-      run: cd ./deploy/
-      
-    - name: Make zip file
-      run: zip -r -qq -j ./CI-CD.zip ./deploy
+    - name: Make Zip File
+      run: zip -r -qq -j ./CI-CD.zip ./DevOps-Practice
 
     - name: Deliver to AWS S3
       env:
