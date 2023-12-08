@@ -81,7 +81,7 @@ jobs:
       run: mkdir deploy
 
     - name: Copy File
-      run: cp -r DevOps-Practice ./deploy/
+      run: cp * ./deploy/
 
     - name: Move Directory
       run: cd ./deploy/
