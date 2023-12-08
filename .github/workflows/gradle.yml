@@ -80,8 +80,20 @@ jobs:
     - name: Make Directory for Jar File
       run: mkdir deploy
 
-    - name: Copy File
-      run: cp -r * ./deploy/
+    - name: PWD
+      run: pwd
+
+    - name: List
+      run: ls -al
+
+    - name: change Directory
+      run: cd ..
+
+    - name: List
+      run: ls -al
+
+    # - name: Copy File
+    #   run: cp -r * ./deploy/
 
     - name: Move Directory
       run: cd ./deploy/
