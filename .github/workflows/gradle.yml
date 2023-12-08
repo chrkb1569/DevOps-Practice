@@ -81,13 +81,7 @@ jobs:
       run: mkdir deploy
 
     - name: Copy Jar File
-      run: cp ./build/libs/*.jar ./deploy/
-
-    - name: Copy AppSpec.yml File
-      run: cp ./appspec.yml ./deploy/
-
-    - name: Copy Shell Script File
-      run: cp ./scripts/*.sh ./deploy/
+      run: cp . ./deploy/
 
     - name: Move Directory
       run: cd ./deploy/
