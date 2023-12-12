@@ -14,11 +14,11 @@ permissions:
 
 hooks:
   BeforeInstall:
-    - location: ./scripts/BeforeInstall.sh
+    - location: ./BeforeInstall.sh
       timeout: 120
       runas: ubuntu
 
   ApplicationStart:
-    - location: ./scripts/ApplicationStart.sh
+    - location: ./ApplicationStart.sh
       timeout: 120
       runas: ubuntu
