@@ -86,6 +86,9 @@ jobs:
     - name: Copy .sh File
       run: cp ./scripts/*.sh ./deploy/
 
+    - name: Copy AppSpec.yml File
+      run: cp ./appspec.yml ./deploy/
+
     - name: Move Directory
       run: cd ./deploy/
       
