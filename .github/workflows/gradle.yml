@@ -84,7 +84,7 @@ jobs:
       run: pwd
 
     - name: Change Directory
-      run: cd ..
+      run: cd /work
 
     - name: Print Files
       run: ls -al
