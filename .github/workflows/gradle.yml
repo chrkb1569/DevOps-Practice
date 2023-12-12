@@ -77,39 +77,30 @@ jobs:
       with:
         arguments: clean bootJar
 
-    - name: Directory Test
-      run: ls -al
+    - name: Make Directory for Deploy
+      run: mkdir deploy
 
-    - name: Current Directory
-      run: pwd
+    - name: Copy Jar File
+      run: cp ./build/libs/*.jar ./deploy/
 
-    - name: Change Directory
-      run: cd /work
+    - name: Copy .sh File
+      run: cp ./scripts/*.sh ./deploy/
 
-    - name: Print Files
-      run: ls -al
-
-    - name: Current Directory
-      run: pwd
+    - name: Move Directory
+      run: cd ./deploy/
       
-    - name: Change Directory
-      run: cd ..
-      
-    - name: Print Files
-      run: ls -al
-      
-    - name: Current Directory
-      run: pwd
+    - name: Make zip file
+      run: zip -r -qq -j ./CI-CD.zip ./deploy
 
-    # - name: Deliver to AWS S3
-    #   env:
-    #     AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
-    #     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
-    #   run: aws s3 cp --region ap-northeast-2 --acl private ./CI-CD.zip s3://${{secrets.BUCKET_NAME}}/
+    - name: Deliver to AWS S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
+      run: aws s3 cp --region ap-northeast-2 --acl private ./CI-CD.zip s3://${{secrets.BUCKET_NAME}}/
 
-    # - name: Implement CodeDeploy
-    #   env:
-    #     AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
-    #     AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
-    #     AWS_DEFAULT_REGION: ${{secrets.AWS_REGION}}
-    #   run: aws deploy create-deployment --application-name ${{secrets.AWS_CODE_DEPLOY_NAME}} --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name ${{secrets.AWS_CODE_DEPLOY_GROUP_NAME}} --s3-location bucket=${{secrets.BUCKET_NAME}},key=CI-CD.zip,bundleType=zip
+    - name: Implement CodeDeploy
+      env:
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
+        AWS_DEFAULT_REGION: ${{secrets.AWS_REGION}}
+      run: aws deploy create-deployment --application-name ${{secrets.AWS_CODE_DEPLOY_NAME}} --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name ${{secrets.AWS_CODE_DEPLOY_GROUP_NAME}} --s3-location bucket=${{secrets.BUCKET_NAME}},key=CI-CD.zip,bundleType=zip
