@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DIRECTORY=/home/ubuntu/chrkb1569
 PROJECT_NAME=CI-CD-Practice-0.0.1-SNAPSHOT
 
