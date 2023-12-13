@@ -19,4 +19,9 @@ public class StatusController {
     public String checkStatusV3() {
         return "This is Version3!!!";
     }
+
+    @GetMapping("/status/v4")
+    public String checkStatusV4() {
+        return "This is Version4!!!!";
+    }
 }

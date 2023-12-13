@@ -3,9 +3,6 @@
 DIRECTORY=/home/ubuntu/chrkb1569
 PROJECT_NAME=CI-CD-Practice-0.0.1-SNAPSHOT
 
-echo "> 파일 복사"
-echo "파일 복사 했다고 가정"
-
 echo "> 현재 실행중인 애플리케이션의 프로세스 ID 확인"
 CURRENT_PID=$(pgrep -fl $PROJECT_NAME/*.jar| awk '{print $1}')
 
