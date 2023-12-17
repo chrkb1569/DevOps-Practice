@@ -26,42 +26,6 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-#    - name: write DB_URL
-#      run: echo "DB_URL=${{secrets.DB_URL}}" >> envyml
-#      working-directory: ./src/main/resources
-#
-#    - name: write DB_PASSWORD
-#      run: echo "DB_PASSWORD=${{secrets.DB_PASSWORD}}" >> env.yml
-#      working-directory: ./src/main/resources
-#
-#    - name: write DB_USERNAME
-#      run: echo "DB_USERNAME=${{secrets.DB_USERNAME}}" >> env.yml
-#      working-directory: ./src/main/resources
-#
-#    - name: write AWS_REGION
-#      run: echo "DB_PASSWORD=${{secrets.AWS_REGION}}" >> env.yml
-#      working-directory: ./src/main/resources
-#
-#    - name: write AWS_BUCKET_NAME
-#      run: echo "DB_USERNAME=${{secrets.BUCKET_NAME}}" >> env.yml
-#      working-directory: ./src/main/resources
-#
-#    - name: write AWS_ACCESS_KEY
-#      run: echo "DB_USERNAME=${{secrets.AWS_ACCESS_KEY}}" >> env.yml
-#      working-directory: ./src/main/resources
-#
-#    - name: write AWS_SECRET_KEY
-#      run: echo "DB_USERNAME=${{secrets.AWS_SECRET_KEY}}" >> env.yml
-#      working-directory: ./src/main/resources
-#
-#    - name: write AWS_CODE_DEPLOY_NAME
-#      run: echo "DB_USERNAME=${{secrets.AWS_CODE_DEPLOY_NAME}}" >> env.yml
-#      working-directory: ./src/main/resources
-#
-#    - name: write AWS_CODE_DEPLOY_GROUP_NAME
-#      run: echo "DB_USERNAME=${{secrets.AWS_CODE_DEPLOY_GROUP_NAME}}" >> env.yml
-#      working-directory: ./src/main/resources
-
     - name: Set up MySQL
       uses: samin/mysql-action@v1.3
       with:
