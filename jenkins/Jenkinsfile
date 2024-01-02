@@ -7,5 +7,17 @@ pipeline {
                 git branch: 'main', url: "https://github.com/chrkb1569/DevOps-Practice"
             }
         }
+
+        stage('Build Project') {
+            agent {
+                docker {
+                    image 'gradle:8.4.0-jdk17'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh './gradlew clean build'
+            }
+        }
     }
 }
