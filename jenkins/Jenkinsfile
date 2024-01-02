@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        gradle 8.4
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
@@ -14,7 +10,7 @@ pipeline {
 
         stage('Build Project') {
             steps {
-                dir("./CI-CD-Practice") {
+                dir("CI-CD-Practice") {
                     sh './gradlew clean build'
                 }
             }
