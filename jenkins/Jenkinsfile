@@ -11,13 +11,5 @@ pipeline {
                 git branch: 'main', url: "https://github.com/chrkb1569/DevOps-Practice"
             }
         }
-
-        stage('Build') {
-            steps {
-                dir("./CI-CD-Practice") {
-                    sh "./gradlew clean build"
-                }
-            }
-        }
     }
 }
