@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        gradle 'gradle'
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
@@ -15,6 +11,7 @@ pipeline {
         stage('Build Project') {
             steps {
                 dir("./CI-CD-Practice") {
+                    sh 'chmod 755 ./gradlew'
                     sh './gradlew clean build'
                 }
             }
