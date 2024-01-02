@@ -12,7 +12,7 @@ public class StatusController {
 
     @GetMapping("/status/v2")
     public String checkStatusV2() {
-        return "This is Version2!!!";
+        return "WebHook Test2";
     }
 
     @GetMapping("/status/v3")
