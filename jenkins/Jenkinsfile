@@ -16,7 +16,9 @@ pipeline {
                 }
             }
             steps {
-                sh './gradlew clean build'
+                dir("./CI-CD-Practice") {
+                    sh './gradlew clean build'
+                }
             }
         }
     }
