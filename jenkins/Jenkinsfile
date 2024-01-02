@@ -10,9 +10,7 @@ pipeline {
 
         stage('Build Project') {
             steps {
-                dir("CI-CD-Practice") {
-                    sh './gradlew clean build'
-                }
+                sh './gradlew clean build'
             }
         }
     }
