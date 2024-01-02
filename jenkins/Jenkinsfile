@@ -1,6 +1,10 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'gradle:8.4.0-jdk17'
+            reuseNode true
+        }
+    }
     stages {
         stage('Clone Repository') {
             steps {
@@ -9,12 +13,6 @@ pipeline {
         }
 
         stage('Build Project') {
-            agent {
-                docker {
-                    image 'gradle:8.4.0-jdk17'
-                    reuseNode true
-                }
-            }
             steps {
                 sh './gradlew clean build'
             }
