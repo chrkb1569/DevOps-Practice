@@ -16,7 +16,7 @@ pipeline {
 
         stage('Install Docker') {
             steps {
-                sh './DockerDeploy.sh'
+                sh './scripts/DockerDeploy.sh'
             }
         }
 
