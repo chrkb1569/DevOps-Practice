@@ -22,6 +22,6 @@ public class StatusController {
 
     @GetMapping("/status/v4")
     public String checkStatusV4() {
-        return "This is Version4!!!!";
+        return "WebHook Test4";
     }
 }
