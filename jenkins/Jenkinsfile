@@ -13,5 +13,13 @@ pipeline {
                 sh './gradlew clean build'
             }
         }
+
+        stage('Build Docker Image') {
+            agent {
+                steps {
+                    sh 'docker build -t jenkins_image .'
+                }
+            }
+        }
     }
 }
