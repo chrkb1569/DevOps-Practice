@@ -31,5 +31,12 @@ pipeline {
                 sh 'docker push chrkb1569/jenkins:test'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh 'ssh ubuntu@$APPLICATION_SERVER'
+                sh 'pwd'
+            }
+        }
     }
 }
