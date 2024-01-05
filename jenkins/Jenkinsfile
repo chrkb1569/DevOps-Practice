@@ -35,7 +35,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@$APPLICATION_SERVER'
-                sh 'scp /var/jenkins_home/workspace/Jenkins Practice/build/libs/*.jar ubuntu@APPLICATION_SERVER:/home/ubuntu/chrkb1569'
+                sh 'scp /var/jenkins_home/workspace/Jenkins Practice/build/libs/*.jar ubuntu@$APPLICATION_SERVER:/home/ubuntu/chrkb1569'
                 sh 'ssh -t ubuntu@$APPLICATION_SERVER ./DockerDeploy.sh'
             }
         }
