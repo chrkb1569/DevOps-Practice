@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@$APPLICATION_SERVER'
                 sh 'scp $JAR_FILE_PATH ubuntu@$APPLICATION_SERVER:/home/ubuntu/chrkb1569'
-                sh 'ssh -t ubuntu@$APPLICATION_SERVER $SCRIPT_FILE_PATH'
+                sh 'ssh -T ubuntu@$APPLICATION_SERVER $SCRIPT_FILE_PATH'
             }
         }
     }
