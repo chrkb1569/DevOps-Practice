@@ -37,7 +37,7 @@ pipeline {
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@$APPLICATION_SERVER'
                 sh 'scp $JAR_FILE_PATH ubuntu@$APPLICATION_SERVER:/home/ubuntu/chrkb1569'
                 sh 'scp $SCRIPT_FILE_PATH ubuntu@$APPLICATION_SERVER:/home/ubuntu/chrkb1569'
-                sh 'ssh -t ubuntu@$APPLICATION_SERVER ./DockerDeploy.sh'
+                sh 'ssh ubuntu@$APPLICATION_SERVER "/home/ubuntu/chrkb1569/DockerDeploy.sh"'
             }
         }
     }
