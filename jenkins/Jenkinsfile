@@ -34,8 +34,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'ssh ubuntu@$APPLICATION_SERVER'
-                sh 'pwd'
+                sshagent (credentials: ['ubuntu']) {
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@$APPLICATION_SERVER'
+                    sh 'pwd'
+                }
             }
         }
     }
