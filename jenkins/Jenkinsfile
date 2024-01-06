@@ -34,11 +34,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'chmod 777 $JAR_FILE_PATH'
-                sh 'chmod 777 $SCRIPT_FILE_PATH'
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@$APPLICATION_SERVER'
                 sh 'scp $JAR_FILE_PATH ubuntu@$APPLICATION_SERVER:/home/ubuntu/chrkb1569'
                 sh 'scp $SCRIPT_FILE_PATH ubuntu@$APPLICATION_SERVER:/home/ubuntu/chrkb1569'
+                sh 'ssh ubuntu@$APPLICATION_SERVER "sudo chmod 777 /home/ubuntu/chrkb1569/DockerDeploy.sh"'
+                sh 'ssh ubuntu@$APPLICATION_SERVER "sudo chmod 777 /home/ubuntu/chrkb1569/*.jar"'
                 sh 'ssh ubuntu@$APPLICATION_SERVER "/home/ubuntu/chrkb1569/DockerDeploy.sh"'
             }
         }
