@@ -25,4 +25,4 @@ echo "> Docker Image를 가져옵니다."
 docker pull $DOCKER_REPOSITORY:$DOCKER_TAG
 
 echo "> Docker Image를 실행합니다."
-docker run -d -p 8080:8080 --name Jenkins -e URL=$DB_URL -e USERNAME=$DB_USERNAME -e PASSWORD=$DB_PASSWORD $DOCKER_REPOSITORY:$DOCKER_TAG
+docker run -d -p 8080:8080 --name Jenkins --env-file /.env $DOCKER_REPOSITORY:$DOCKER_TAG
