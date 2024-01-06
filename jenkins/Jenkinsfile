@@ -22,7 +22,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t --build-arg DB_URL=$DB_URL DB_USERNAME=$DB_USERNAME DB_PASSWORD=$DB_PASSWORD chrkb1569/jenkins:test .'
+                sh 'docker build -t chrkb1569/jenkins:test .'
             }
         }
 
