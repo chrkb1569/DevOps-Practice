@@ -3,7 +3,14 @@ FROM openjdk:17-oracle
 VOLUME /tmp
 
 ARG JAR_FILE=/build/libs/*.jar
+ARG DB_URL
+ARG DB_USERNAME
+ARG DB_PASSWORD
+
+ENV URL $DB_URL
+ENV USERNAME $DB_USERNAME
+ENV PASSWORD $DB_PASSWORD
 
 COPY ${JAR_FILE} app.jar
 
-ENTRYPOINT ["nohup", "java", "-jar", "app.jar", "&"]
+ENTRYPOINT ["nohup", "java", "-jar", "app.jar", "-dDB_URL=$URL", "-dDB_USERNAME=$USERNAME", "-dDB_PASSWORD=$PASSWORD", "&"]
